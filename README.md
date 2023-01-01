@@ -2,6 +2,8 @@
 
 Repository pattern support library
 
+[Document](https://gsm-msg.github.io/Miniature/documentation/miniature/)
+
 <br>
 
 ## Contents
