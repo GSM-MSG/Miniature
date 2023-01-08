@@ -37,7 +37,7 @@ To integrate `Miniature` into your Xcode project using Swift Package Manager, ad
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/GSM-MSG/Miniature.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/GSM-MSG/Miniature.git", .upToNextMajor(from: "1.1.0"))
 ]
 ```
 
