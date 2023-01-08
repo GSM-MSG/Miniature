@@ -77,7 +77,7 @@ final class ViewController: UIViewController {
             test.localData()
         } onRemote: {
             test.remoteData()
-        } updateLocal: { value in
+        } refreshLocal: { value in
             test.updateLocal(int: value)
         }
         .publish { status in
