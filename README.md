@@ -1,6 +1,6 @@
 # Miniature
 
-Repository pattern support library
+Miniature can be used to handle loading data from both local and remote sources, as well as caching the data locally.
 
 [Document](https://gsm-msg.github.io/Miniature/documentation/miniature/)
 
