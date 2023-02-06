@@ -11,8 +11,14 @@ let package = Package(
             name: "Miniature",
             targets: ["Miniature"]
         ),
+        .library(
+            name: "RxMiniature",
+            targets: ["RxMiniature"]
+        )
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.5.0"))
+    ],
     targets: [
         .target(
             name: "Miniature",
@@ -22,5 +28,12 @@ let package = Package(
             name: "MiniatureTests",
             dependencies: ["Miniature"]
         ),
+        .target(
+            name: "RxMiniature",
+            dependencies: [
+                "Miniature",
+                .product(name: "RxSwift", package: "RxSwift")
+            ]
+        )
     ]
 )
