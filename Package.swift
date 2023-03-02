@@ -14,6 +14,10 @@ let package = Package(
         .library(
             name: "RxMiniature",
             targets: ["RxMiniature"]
+        ),
+        .library(
+            name: "CombineMiniature",
+            targets: ["CombineMiniature"]
         )
     ],
     dependencies: [
@@ -33,6 +37,12 @@ let package = Package(
             dependencies: [
                 "Miniature",
                 .product(name: "RxSwift", package: "RxSwift")
+            ]
+        ),
+        .target(
+            name: "CombineMiniature",
+            dependencies: [
+                "Miniature"
             ]
         )
     ]
