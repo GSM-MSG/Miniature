@@ -6,7 +6,7 @@ import Foundation
 public struct Miniature<T> {
     /// `onLocal` is a closure that returns data from the local cache.
     var onLocal: () -> T?
-    /// `onAsyncRemote` is an optional closure that returns data from a remote source as an async task
+    /// `onRemote` is an optional closure that returns data from a remote source as an async task
     var onRemote: () async throws -> T
     /// `refreshLocal` is a closure that updates the local cache with new data.
     var refreshLocal: (T) -> Void
