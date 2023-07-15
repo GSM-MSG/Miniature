@@ -28,10 +28,6 @@ let package = Package(
             name: "Miniature",
             dependencies: []
         ),
-        .testTarget(
-            name: "MiniatureTests",
-            dependencies: ["Miniature"]
-        ),
         .target(
             name: "RxMiniature",
             dependencies: [
@@ -44,6 +40,10 @@ let package = Package(
             dependencies: [
                 "Miniature"
             ]
+        ),
+        .testTarget(
+            name: "MiniatureTests",
+            dependencies: ["Miniature"]
         )
     ]
 )
