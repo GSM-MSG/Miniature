@@ -46,11 +46,15 @@ public struct CombineMiniature<T> {
             .map(MiniatureStatus.loading)
 
         let remotePublisher = onRemote()
+            .handleEvents(receiveOutput: { output in
+                refreshLocal(output)
+            })
             .map(MiniatureStatus.completed)
             .catch { error in
                 Just(MiniatureStatus.error(error))
                     .eraseToAnyPublisher()
             }
+
         
         return loadingPublisher
             .merge(with: remotePublisher)

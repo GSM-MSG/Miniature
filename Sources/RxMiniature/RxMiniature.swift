@@ -44,6 +44,9 @@ public struct RxMiniature<T> {
             .map(MiniatureStatus.loading)
 
         let remoteObservable = onRemote()
+            .do(onNext: { output in
+                refreshLocal(output)
+            })
             .map(MiniatureStatus.completed)
             .catch { error in
                 Observable.just(MiniatureStatus.error(error))
