@@ -39,4 +39,22 @@ public struct CombineMiniature<T> {
         return cancellable
 
     }
+
+    public func toAnyPublisher() -> AnyPublisher<MiniatureStatus<T>, Never> {
+        let local = onLocal()
+        let loadingPublisher = Just(local)
+            .map(MiniatureStatus.loading)
+
+        let remotePublisher = onRemote()
+            .map(MiniatureStatus.completed)
+            .catch { error in
+                Just(MiniatureStatus.error(error))
+                    .eraseToAnyPublisher()
+            }
+        
+        return loadingPublisher
+            .merge(with: remotePublisher)
+            .eraseToAnyPublisher()
+    }
+
 }
