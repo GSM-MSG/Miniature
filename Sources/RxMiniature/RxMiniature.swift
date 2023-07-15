@@ -37,4 +37,18 @@ public struct RxMiniature<T> {
             }
         return disposable
     }
+
+    public func toObservable() -> Observable<MiniatureStatus<T>> {
+        let local = onLocal()
+        let loadingObservable = Observable.just(local)
+            .map(MiniatureStatus.loading)
+
+        let remoteObservable = onRemote()
+            .map(MiniatureStatus.completed)
+            .catch { error in
+                Observable.just(MiniatureStatus.error(error))
+            }
+
+        return Observable.merge(loadingObservable, remoteObservable)
+    }
 }
