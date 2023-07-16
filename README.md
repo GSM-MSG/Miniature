@@ -72,8 +72,25 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var test = Test()
+
+        await Miniature {
+            test.localData()
+        } onRemote: {
+            test.remoteData()
+        } refreshLocal: { value in
+            test.updateLocal(int: value)
+        }
+        .publish { status in
+            status.action { load in
+                print("LOAD", load)
+            } onCompleted: { complete in
+                print("COMPLETE", complete)
+            } onError: { err in
+                print(err)
+            }
+        }
         
-        Miniature {
+        CombineMiniature {
             test.localData()
         } onRemote: {
             test.remoteData()
